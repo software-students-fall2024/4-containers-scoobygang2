@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,14 +16,12 @@
     <div class="container">
         <body>
 
-            <form class="box">
-                <button class="btn" type="button" onclick="myFunction()">Microphone</button>
-                <script>
-                    function myFunction() {
-                        console.log("Microphone activated");
-                    }
-                </script>
-            </form>
+            <div class="box">
+                <form action="/uploaded" method="POST">
+                    <button class="btn" type="submit" name="action" value="microphone">Microphone</button>
+                </form>
+                
+            </div>
 
             <form class="box" method="POST" action="" enctype="multipart/form-data">
                 <label for="file"><strong>Audio file</strong></label>

@@ -1,4 +1,9 @@
 from flask import Flask, render_template, request, session
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# from speech_to_text import audio_to_text
+
 app = Flask(__name__)
 
 
@@ -12,13 +17,15 @@ def index():
         # return render_template('uploaded.html')
     return render_template('fileUpload.html')
 
-@app.route('/upload', methods=['POST'])
+@app.route('/uploaded', methods=['POST'])
 def upload_file():
-    return render_template('uploaded.html')
+    action=request.form.get('action')
+    if action=='microphone':
+        # result=audio_to_text(1000)
+        return render_template('uploaded.html', transcript=result)
                            
 @app.route('/spoken')
 def spoken():
-    audio_to_text(100)
     return render_template('spoken.html', "The transcript is here.")
 
 
